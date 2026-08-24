@@ -1,0 +1,6 @@
+@Mbank_HostAddress = http://localhost:5123
+
+GET {{Mbank_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
