@@ -1,3 +1,7 @@
 <Solution>
+  <Project Path="../Mbank.Application/Mbank.Application.csproj" Id="6a404921-8087-49a9-8c98-6d937dae7b4a" />
+  <Project Path="../Mbank.Core/Mbank.Core.csproj" Id="d6ea1864-977e-491e-bc40-11f269393e7e" />
+  <Project Path="../Mbank.Infrastructure/Mbank.Infrastructure.csproj" Id="a2013dd2-9344-44d4-8300-63016575989e" />
+  <Project Path="../Mbank.Shared/Mbank.Shared.csproj" Id="cfab1162-99af-4214-9edb-c7eecd131747" />
   <Project Path="Mbank.csproj" />
 </Solution>
