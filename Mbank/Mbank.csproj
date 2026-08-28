@@ -23,9 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Mbank.Application\Mbank.Application.csproj" />
-    <ProjectReference Include="..\Mbank.Core\Mbank.Core.csproj" />
     <ProjectReference Include="..\Mbank.Infrastructure\Mbank.Infrastructure.csproj" />
-    <ProjectReference Include="..\Mbank.Shared\Mbank.Shared.csproj" />
   </ItemGroup>
 
 </Project>
