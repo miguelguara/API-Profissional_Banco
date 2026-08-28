@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Mbank.Core.Models;
+namespace Mbank.Core.Entitys;
 
 public partial class Endereco
 {
@@ -18,6 +18,4 @@ public partial class Endereco
     public string Uf { get; set; } = null!;
 
     public Guid ClienteId { get; set; }
-
-    public virtual Cliente Cliente { get; set; } = null!;
 }

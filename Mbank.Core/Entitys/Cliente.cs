@@ -1,7 +1,9 @@
-﻿using System;
+﻿using Mbank.Core.Entitys;
+using Mbank.Core.Enums;
+using System;
 using System.Collections.Generic;
 
-namespace Mbank.Core.Models;
+namespace Mbank.Core.Entitys;
 
 public partial class Cliente
 {
@@ -9,7 +11,7 @@ public partial class Cliente
 
     public string NomeCompleto { get; set; } = null!;
 
-    public short Situacao { get; set; }
+    public ESituacaoCliente Situacao { get; set; }
 
     public string Email { get; set; } = null!;
 
@@ -21,7 +23,4 @@ public partial class Cliente
 
     public string Senha { get; set; } = null!;
 
-    public virtual ICollection<Carteira> Carteiras { get; set; } = new List<Carteira>();
-
-    public virtual ICollection<Endereco> Enderecos { get; set; } = new List<Endereco>();
 }

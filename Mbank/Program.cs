@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Mbank.Infrastructure.Data.Context;
+using Mbank.Core.Interfaces.Repositories;
+using Mbank.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +13,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("ConexaoBanco")));
+builder.Services.AddScoped<IclienteRepository, ClienteService>();
 
 
 var app = builder.Build();

@@ -1,4 +1,5 @@
-﻿using Mbank.Core.Models;
+﻿using Mbank.Core.Entitys;
+using Mbank.Core.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Mbank.Infrastructure.Data.Context;

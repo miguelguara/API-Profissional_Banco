@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Mbank.Core.Entitys;
+using System;
 using System.Collections.Generic;
 
-namespace Mbank.Core.Models
+namespace Mbank.Core.Entitys
 {
     public partial class Cofrinho
     {
@@ -14,9 +15,5 @@ namespace Mbank.Core.Models
         public decimal? Meta { get; set; }
 
         public Guid CarteiraId { get; set; }
-
-        public virtual Carteira Carteira { get; set; } = null!;
-
-        public virtual ICollection<Transacao> Transacaos { get; set; } = new List<Transacao>();
     }
 }

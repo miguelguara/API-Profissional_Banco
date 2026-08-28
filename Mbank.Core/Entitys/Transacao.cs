@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Mbank.Core.Entitys;
+using System;
 using System.Collections.Generic;
 
-namespace Mbank.Core.Models;
+namespace Mbank.Core.Entitys;
 
 public partial class Transacao
 {
@@ -20,8 +21,4 @@ public partial class Transacao
     public Guid CarteiraId { get; set; }
 
     public Guid? CofrinhoId { get; set; }
-
-    public virtual Carteira Carteira { get; set; } = null!;
-
-    public virtual Cofrinho? Cofrinho { get; set; }
 }
