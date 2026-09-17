@@ -19,9 +19,8 @@ namespace Mbank.Infrastructure.Repositories
 
         public async Task<Guid> AdicionarCliente(Cliente cliente)
         {
-            cliente.Id = Guid.NewGuid();
             await _context.Clientes.AddAsync(cliente);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return cliente.Id;
         }
     }

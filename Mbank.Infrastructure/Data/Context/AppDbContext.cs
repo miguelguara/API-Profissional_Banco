@@ -27,7 +27,7 @@ public partial class AppDbContext : DbContext
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         => optionsBuilder.UseNpgsql("Host=localhost;Port=5432;Database=api_banco;Username=postgres;Password=1234");
 
-    protected override void OnModelCreating(ModelBuilder modelBuilder)
+   /* protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.Entity<Carteira>(entity =>
         {
@@ -182,5 +182,5 @@ public partial class AppDbContext : DbContext
         OnModelCreatingPartial(modelBuilder);
     }
 
-    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+    partial void OnModelCreatingPartial(ModelBuilder modelBuilder);*/
 }
