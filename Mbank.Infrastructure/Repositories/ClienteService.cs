@@ -4,6 +4,7 @@ using System.Text;
 using Mbank.Core.Interfaces.Repositories;
 using Mbank.Core.Entitys;
 using Mbank.Infrastructure.Data.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace Mbank.Infrastructure.Repositories
 {
@@ -22,6 +23,19 @@ namespace Mbank.Infrastructure.Repositories
             await _context.Clientes.AddAsync(cliente);
             await _context.SaveChangesAsync();
             return cliente.Id;
+        }
+
+        public async Task<List<Cliente>> ListarClientes()
+        {
+            var clientes = await _context.Clientes.ToListAsync();
+            return clientes;
+        }
+
+        public async Task<Cliente?> BuscarClientePorNome(string nomeCompleto) 
+        {
+            var cliente = _context.Clientes.FirstOrDefault(c => c.NomeCompleto == nomeCompleto);
+
+           return cliente; 
         }
     }
 }

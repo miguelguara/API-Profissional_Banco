@@ -6,6 +6,7 @@ using Mbank.Core.Interfaces.Aplications;
 using Mbank.Application.Applications;
 using Mbank.Application.Validators;
 using FluentValidation;
+using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,8 @@ options.UseNpgsql(builder.Configuration.GetConnectionString("ConexaoBanco")));
 builder.Services.AddScoped<IclienteRepository, ClienteService>();
 builder.Services.AddScoped<ICadastroClienteApp, CadastrarCAplication>();
 builder.Services.AddValidatorsFromAssemblyContaining<CadastrarClienteValidation>();
+
+builder.Services.AddFluentValidationAutoValidation();
 
 
 var app = builder.Build();
