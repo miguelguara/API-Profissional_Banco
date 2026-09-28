@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Mbank.Core.Interfaces.Repositories;
+﻿using Mbank.Core.Interfaces.Repositories;
 using Mbank.Core.Entitys;
 using Mbank.Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
@@ -36,6 +33,19 @@ namespace Mbank.Infrastructure.Repositories
             var cliente = _context.Clientes.FirstOrDefault(c => c.NomeCompleto == nomeCompleto);
 
            return cliente; 
+        }
+
+        public async Task<Cliente?> BuscarClienteID(Guid id)
+        {
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+            return cliente;
+        }
+
+        public async Task<Cliente>AlterarCliente(Cliente clienteAtualizado) 
+        {
+            _context.Clientes.Update(clienteAtualizado);
+            _context.SaveChanges();
+            return clienteAtualizado;
         }
     }
 }

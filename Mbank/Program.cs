@@ -20,6 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("ConexaoBanco")));
 builder.Services.AddScoped<IclienteRepository, ClienteService>();
 builder.Services.AddScoped<ICadastroClienteApp, CadastrarCAplication>();
+builder.Services.AddScoped<IAlterarClienteApp, AlterarClienteAplication>();
 builder.Services.AddValidatorsFromAssemblyContaining<CadastrarClienteValidation>();
 
 builder.Services.AddFluentValidationAutoValidation();

@@ -9,7 +9,9 @@ namespace Mbank.Core.Interfaces.Repositories
     {
         Task<Guid> AdicionarCliente(Cliente cliente);
         Task<List<Cliente>> ListarClientes();
-
         Task<Cliente> BuscarClientePorNome(string Nome);
+        Task<Cliente> BuscarClienteID(Guid id);
+
+        Task<Cliente> AlterarCliente(Cliente clienteAtualizado);
     }
 }

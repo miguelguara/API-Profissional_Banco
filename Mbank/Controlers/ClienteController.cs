@@ -11,12 +11,14 @@ namespace Mbank.Controlers
     public class ClienteController : MainController
     {
         private readonly ICadastroClienteApp _cadastroClienteApp;
+        private readonly IAlterarClienteApp _alterarClienteApp;
         private readonly IclienteRepository _crudcliente;
 
-        public ClienteController(ICadastroClienteApp cadastroClienteApp, IclienteRepository icliente)
+        public ClienteController(ICadastroClienteApp cadastroClienteApp, IclienteRepository icliente, IAlterarClienteApp alterarClienteApp)
         {
             _cadastroClienteApp = cadastroClienteApp;
             _crudcliente = icliente;
+            _alterarClienteApp = alterarClienteApp;
         }
 
         [HttpPost("cadastrarcliente")]
@@ -39,7 +41,18 @@ namespace Mbank.Controlers
         [HttpGet("buscarclientepnome/{nomecompleto}")]
         public async Task<IActionResult>BuscarClientePorNome(string nomecompleto) 
         {
+            var cliente = _crudcliente.BuscarClientePorNome(nomecompleto);
+            if(cliente == null) return NotFound();
+
+            return Ok(cliente);
         }
 
+        [HttpPut("altcliente/{id}")]
+        public async Task<IActionResult> AlterarCliente(Guid id, AlterarClienteDTO altCliente) 
+        {
+            var cliente = await _alterarClienteApp.AlterarCliente(id, altCliente);
+            if(cliente == null) return BadRequest("Não foi possivel realizar a alteração de cliente");
+            return Ok(cliente);
+        }
     }
 }
