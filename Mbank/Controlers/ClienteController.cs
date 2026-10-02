@@ -1,6 +1,6 @@
-﻿using Mbank.Core.Interfaces.Aplications;
+﻿using Mbank.Core.Interfaces.Aplications.Clientes;
 using Mbank.Core.Interfaces.Repositories;
-using Mbank.Core.Models;
+using Mbank.Core.Models.Clientes;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 

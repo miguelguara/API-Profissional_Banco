@@ -1,6 +1,6 @@
 ﻿using Mbank.Core.Enums;
 
-namespace Mbank.Core.Models
+namespace Mbank.Core.Models.Clientes
 {
     public class ClienteDTO
     {

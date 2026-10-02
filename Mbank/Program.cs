@@ -2,11 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Mbank.Infrastructure.Data.Context;
 using Mbank.Core.Interfaces.Repositories;
 using Mbank.Infrastructure.Repositories;
-using Mbank.Core.Interfaces.Aplications;
 using Mbank.Application.Applications;
-using Mbank.Application.Validators;
 using FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
+using Mbank.Core.Interfaces.Aplications.Clientes;
+using Mbank.Application.Validators.Cliente;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +14,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
+//Adiciona o swagger e a conexão com o banco de dados;
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>

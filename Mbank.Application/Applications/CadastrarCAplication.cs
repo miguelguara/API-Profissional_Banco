@@ -1,7 +1,7 @@
 ﻿using Mbank.Core.Entitys;
-using Mbank.Core.Interfaces.Aplications;
+using Mbank.Core.Interfaces.Aplications.Clientes;
 using Mbank.Core.Interfaces.Repositories;
-using Mbank.Core.Models;
+using Mbank.Core.Models.Clientes;
 using System;
 using System.Collections.Generic;
 using System.Text;

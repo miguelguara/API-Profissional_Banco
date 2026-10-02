@@ -4,8 +4,16 @@ using System.Collections.Generic;
 
 namespace Mbank.Core.Entitys;
 
-public partial class Carteira
+public class Carteira
 {
+    public Carteira(decimal saldo, string conta, string agencia,Guid idcliente)
+    {
+        Id = Guid.NewGuid();
+        Saldo = saldo;
+        Conta = conta;
+        Agencia = agencia;
+        ClienteId = idcliente;
+    }
     public Guid Id { get; set; }
 
     public decimal Saldo { get; set; }

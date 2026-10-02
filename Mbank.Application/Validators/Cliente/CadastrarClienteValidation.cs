@@ -1,11 +1,11 @@
 ﻿using FluentValidation;
 using Mbank.Core.Entitys;
-using Mbank.Core.Models;
+using Mbank.Core.Models.Clientes;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mbank.Application.Validators
+namespace Mbank.Application.Validators.Cliente
 {
     public class CadastrarClienteValidation: AbstractValidator<ClienteDTO>
     {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mbank.Core.Models
+namespace Mbank.Core.Models.Clientes
 {
     public class AlterarClienteDTO
     {
