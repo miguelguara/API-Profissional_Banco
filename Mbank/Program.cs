@@ -24,6 +24,7 @@ builder.Services.AddScoped<IclienteRepository, ClienteService>();
 builder.Services.AddScoped<ICadastroClienteApp, CadastrarCAplication>();
 builder.Services.AddScoped<IAlterarClienteApp, AlterarClienteAplication>();
 builder.Services.AddValidatorsFromAssemblyContaining<CadastrarClienteValidation>();
+builder.Services.AddValidatorsFromAssemblyContaining<AlterarClienteValidator>();
 
 builder.Services.AddFluentValidationAutoValidation();
 

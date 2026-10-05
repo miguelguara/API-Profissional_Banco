@@ -47,5 +47,14 @@ namespace Mbank.Infrastructure.Repositories
             _context.SaveChanges();
             return clienteAtualizado;
         }
+
+        public async Task<List<Cliente>> ExcluirCliente(Guid id)
+        {
+            var cliente = await _context.Clientes.FirstOrDefaultAsync(c => c.Id == id);
+            if (cliente == null) return null;
+            _context.Clientes.Remove(cliente);
+            _context.SaveChanges();
+            return await _context.Clientes.ToListAsync();
+        }
     }
 }

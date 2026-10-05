@@ -13,5 +13,7 @@ namespace Mbank.Core.Interfaces.Repositories
         Task<Cliente> BuscarClienteID(Guid id);
 
         Task<Cliente> AlterarCliente(Cliente clienteAtualizado);
+
+        Task<List<Cliente>> ExcluirCliente(Guid id);
     }
 }

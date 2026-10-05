@@ -6,13 +6,13 @@ namespace Mbank.Core.Entitys;
 
 public class Carteira
 {
-    public Carteira(decimal saldo, string conta, string agencia,Guid idcliente)
+    public Carteira(decimal saldo, string conta, string agencia,Guid clienteId)
     {
         Id = Guid.NewGuid();
         Saldo = saldo;
         Conta = conta;
         Agencia = agencia;
-        ClienteId = idcliente;
+        ClienteId = ClienteId;
     }
     public Guid Id { get; set; }
 

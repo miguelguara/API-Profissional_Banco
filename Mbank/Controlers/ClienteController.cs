@@ -22,36 +22,44 @@ namespace Mbank.Controlers
         }
 
         [HttpPost("cadastrarcliente")]
-        public async Task<IActionResult> CadastrarCliente(ClienteDTO clienteDTO) 
+        public async Task<IActionResult> CadastrarCliente(ClienteDTO clienteDTO)
         {
-           var Cadastro = await _cadastroClienteApp.CadastrarAsync(clienteDTO);
+            var Cadastro = await _cadastroClienteApp.CadastrarAsync(clienteDTO);
 
-            if(Cadastro != null) return Ok(Cadastro);
+            if (Cadastro != null) return Ok(Cadastro);
 
             return BadRequest();
         }
 
         [HttpGet("listarclientes")]
-        public async Task<IActionResult> ListarClientesAtivos() 
+        public async Task<IActionResult> ListarClientesAtivos()
         {
-         var clientes = await _crudcliente.ListarClientes();
-         return Ok(clientes);
+            var clientes = await _crudcliente.ListarClientes();
+            return Ok(clientes);
         }
 
         [HttpGet("buscarclientepnome/{nomecompleto}")]
-        public async Task<IActionResult>BuscarClientePorNome(string nomecompleto) 
+        public async Task<IActionResult> BuscarClientePorNome(string nomecompleto)
         {
             var cliente = _crudcliente.BuscarClientePorNome(nomecompleto);
-            if(cliente == null) return NotFound();
+            if (cliente == null) return NotFound();
 
             return Ok(cliente);
         }
 
         [HttpPut("altcliente/{id}")]
-        public async Task<IActionResult> AlterarCliente(Guid id, AlterarClienteDTO altCliente) 
+        public async Task<IActionResult> AlterarCliente(Guid id, AlterarClienteDTO altCliente)
         {
             var cliente = await _alterarClienteApp.AlterarCliente(id, altCliente);
-            if(cliente == null) return BadRequest("Não foi possivel realizar a alteração de cliente");
+            if (cliente == null) return BadRequest("Não foi possivel realizar a alteração de cliente");
+            return Ok(cliente);
+        }
+
+        [HttpDelete("deletarCliente/{id}")]
+        public async Task<IActionResult> ExcluirCliente(Guid id)
+        {
+            var cliente = await _crudcliente.ExcluirCliente(id);
+            if (cliente == null) return BadRequest();
             return Ok(cliente);
         }
     }
