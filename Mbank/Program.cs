@@ -10,19 +10,23 @@ using Mbank.Application.Validators.Cliente;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 
 builder.Services.AddControllers();
-// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+
 
 //Adiciona o swagger e a conexão com o banco de dados;
 builder.Services.AddOpenApi();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<AppDbContext>(options =>
 options.UseNpgsql(builder.Configuration.GetConnectionString("ConexaoBanco")));
+
+//Injeções de dependencia
 builder.Services.AddScoped<IclienteRepository, ClienteService>();
 builder.Services.AddScoped<ICadastroClienteApp, CadastrarCAplication>();
 builder.Services.AddScoped<IAlterarClienteApp, AlterarClienteAplication>();
+builder.Services.AddScoped<IenderecoRepository, EnderecoService>();
+
+//validators
 builder.Services.AddValidatorsFromAssemblyContaining<CadastrarClienteValidation>();
 builder.Services.AddValidatorsFromAssemblyContaining<AlterarClienteValidator>();
 

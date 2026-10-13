@@ -5,6 +5,16 @@ namespace Mbank.Core.Entitys;
 
 public partial class Endereco
 {
+    public Endereco(string cep, string logradouro, string bairro, string cidade, string uf, Guid clienteId)
+    {
+        Id = Guid.NewGuid();
+        Cep = cep;
+        Logradouro = logradouro;
+        Bairro = bairro;
+        Cidade = cidade;
+        Uf = uf;
+        ClienteId = clienteId;
+    }
     public Guid Id { get; set; }
 
     public string Cep { get; set; } = null!;
