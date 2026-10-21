@@ -11,5 +11,8 @@ namespace Mbank.Core.Interfaces.Repositories
         Task<Guid> CadastrarEndereco(CadastroEndDTO endereco);
         Task<List<Endereco>> ListarEnderecos();
         Task<List<Endereco>> ListarEnderecosPorCliente(Guid idCLiente);
+        Task<Endereco> AlterarEnd(Guid IdEndereco, AlterarEndDTO endereco);
+        Task<List<Endereco>> ExcluirEndereco(Guid IdEndereco);
+        Task<Guid> ExcluirTodosEnderecosPorCliente(Guid IdCliente);
     }
 }

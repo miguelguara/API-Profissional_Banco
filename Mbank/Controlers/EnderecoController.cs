@@ -41,5 +41,13 @@ namespace Mbank.Controlers
             if (end == null) return NotFound();
             return Ok(end);
         }
+
+        [HttpPut("AlterarEnderecoporID{id}")]
+        public async Task<IActionResult> AlterarEndereco(Guid id,AlterarEndDTO alterarEndDTO)
+        {
+            var end = await _enderecoRepository.AlterarEnd(id,alterarEndDTO);
+            if (end == null) return BadRequest();
+            return Ok(end);
+        }
     }
 }

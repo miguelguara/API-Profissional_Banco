@@ -18,12 +18,37 @@ namespace Mbank.Infrastructure.Repositories
             _appDbContext = appDbContext;
         }
 
+        public async Task<Endereco?> AlterarEnd(Guid IdEndereco, AlterarEndDTO endereco)
+        {
+            var end = await _appDbContext.Enderecos.FirstOrDefaultAsync(e => e.Id == IdEndereco);
+
+            if (end == null) return null;
+
+            end.Logradouro = endereco.Logradouro;
+            end.Cep = endereco.Cep;
+            end.Bairro = endereco.Bairro;
+            end.Cidade = endereco.Cidade;
+            _appDbContext.Update(end);
+            await _appDbContext.SaveChangesAsync();
+            return end;
+        }
+
         public async Task<Guid> CadastrarEndereco(CadastroEndDTO endereco)
         {
             var ed = new Endereco(endereco.Cep, endereco.Logradouro, endereco.Bairro, endereco.Cidade, endereco.Uf, endereco.ClienteId);
             await _appDbContext.Enderecos.AddAsync(ed);
             _appDbContext.SaveChanges();
             return ed.Id;
+        }
+
+        public Task<List<Endereco>> ExcluirEndereco(Guid IdEndereco)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<Guid> ExcluirTodosEnderecosPorCliente(Guid IdCliente)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<List<Endereco>> ListarEnderecos()
