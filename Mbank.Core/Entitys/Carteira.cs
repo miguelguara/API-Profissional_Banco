@@ -6,13 +6,13 @@ namespace Mbank.Core.Entitys;
 
 public class Carteira
 {
-    public Carteira(decimal saldo, string conta, string agencia,Guid clienteId)
+    public Carteira(Guid clienteId)
     {
         Id = Guid.NewGuid();
-        Saldo = saldo;
-        Conta = conta;
-        Agencia = agencia;
-        ClienteId = ClienteId;
+        Saldo = 0;
+        Conta = gerarConta();
+        Agencia = "0001";
+        ClienteId = clienteId;
     }
     public Guid Id { get; set; }
 
@@ -23,5 +23,16 @@ public class Carteira
     public string Agencia { get; set; } = null!;
 
     public Guid ClienteId { get; set; }
+
+    private string gerarConta() 
+    {
+        var r = new Random();
+
+        int numerodaConta = r.Next(10000000, 99999999);
+
+        int digito = r.Next(0, 10);
+
+        return $"{numerodaConta}-{digito}";
+    }
 
 }

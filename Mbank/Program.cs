@@ -25,6 +25,9 @@ builder.Services.AddScoped<IclienteRepository, ClienteService>();
 builder.Services.AddScoped<ICadastroClienteApp, CadastrarCAplication>();
 builder.Services.AddScoped<IAlterarClienteApp, AlterarClienteAplication>();
 builder.Services.AddScoped<IenderecoRepository, EnderecoService>();
+builder.Services.AddScoped<IcarteiraRepository, CarteiraService>();
+builder.Services.AddScoped<ItransacaoRepository, TransacaoService>();
+
 
 //validators
 builder.Services.AddValidatorsFromAssemblyContaining<CadastrarClienteValidation>();

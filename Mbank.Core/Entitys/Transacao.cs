@@ -1,11 +1,21 @@
 ﻿using Mbank.Core.Entitys;
+using Mbank.Core.Enums;
 using System;
 using System.Collections.Generic;
 
 namespace Mbank.Core.Entitys;
 
-public partial class Transacao
+public class Transacao
 {
+    public Transacao(EtipoTransacao tipo,decimal valor, string? descricao, Guid carteiraId,Guid? cofrinhoId = null)
+    {
+        Id = Guid.NewGuid();
+        Data = DateTime.Now;
+        Descricao = descricao;
+        CarteiraId = carteiraId;
+        CofrinhoId = cofrinhoId;
+    }
+
     public Guid Id { get; set; }
 
     public short Tipo { get; set; }
