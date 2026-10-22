@@ -11,7 +11,7 @@ public class Transacao
     {
         Id = Guid.NewGuid();
         Data = DateTime.Now;
-        Tipo = (short)tipo;
+        Tipo = tipo;
         Descricao = descricao;
         CarteiraId = carteiraId;
         CofrinhoId = cofrinhoId;
@@ -19,7 +19,7 @@ public class Transacao
 
     public Guid Id { get; set; }
 
-    public short Tipo { get; set; }
+    public EtipoTransacao Tipo { get; set; }
 
     public DateTime Data { get; set; }
 

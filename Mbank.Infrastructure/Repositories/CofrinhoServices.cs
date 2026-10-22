@@ -1,5 +1,8 @@
 ﻿using Mbank.Core.Entitys;
 using Mbank.Core.Interfaces.Repositories;
+using Mbank.Core.Models.Cofrinhos;
+using Mbank.Infrastructure.Data.Context;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -8,29 +11,51 @@ namespace Mbank.Infrastructure.Repositories
 {
     public class CofrinhoServices : IcofrinhoRepository
     {
+        private readonly AppDbContext _appDbContext;
+        public CofrinhoServices(AppDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
         public Task<Guid> AlterarCofre(Guid id, Cofrinho cofre)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Cofrinho?> BuscarCofreporID(Guid Id)
+        public async Task<Cofrinho?> BuscarCofreporID(Guid Id)
         {
-            throw new NotImplementedException();
+            return await _appDbContext.Cofrinhos.FirstOrDefaultAsync(c => c.Id == Id);
         }
 
-        public Task<List<Cofrinho>?> BuscarCofresdoCliente(Guid id)
+        public async Task<List<Cofrinho>?> BuscarCofresdoCliente(Guid id)
         {
-            throw new NotImplementedException();
+            var carteira = await _appDbContext.Carteiras.FirstOrDefaultAsync(c => c.ClienteId == id); 
+            var cofres = await _appDbContext.Cofrinhos.Where(cr => cr.CarteiraId == carteira.Id).ToListAsync();
+            return cofres;
         }
 
-        public Task<Guid> CriarCofrinho(Cofrinho cofre)
+        public async Task<Guid> CriarCofrinho(CadastrarCofrinhoDTO cofre)
         {
-            throw new NotImplementedException();
+            var c = new Cofrinho(
+                cofre.Nome,
+                cofre.Meta,
+                cofre.CarteiraId
+                );
+
+            _appDbContext.Cofrinhos.Add(c);
+            await _appDbContext.SaveChangesAsync();
+
+            return c.Id;
         }
 
-        public Task<bool> ExcluirCofre(Guid Id)
+        public async Task<bool> ExcluirCofre(Guid Id)
         {
-            throw new NotImplementedException();
+            var cofre = _appDbContext.Cofrinhos.FirstOrDefault(c => c.Id == Id);
+
+            if (cofre == null) return false;
+
+            _appDbContext.Cofrinhos.Remove(cofre);
+            await _appDbContext.SaveChangesAsync();
+            return true;
         }
     }
 }

@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Mbank.Shared\Mbank.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Interfaces\Aplications\TransacoesAP\" />
+  </ItemGroup>
+
 </Project>
