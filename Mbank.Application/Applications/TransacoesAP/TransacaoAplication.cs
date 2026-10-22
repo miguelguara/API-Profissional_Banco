@@ -22,7 +22,7 @@ namespace Mbank.Application.Applications.TransacoesAP
         {
             var t = new Transacao(trasacao.Tipo,trasacao.Valor,trasacao.Descricao,trasacao.CarteiraId);
             var carteira = await _carteiraRepository.BuscarCarteiraporID(trasacao.CarteiraId);
-            // Regra de negócio: o valor deve ser positivo.
+            //o valor deve ser positivo.
             if (trasacao.Valor <= 0)
             {
                 throw new ArgumentException(
