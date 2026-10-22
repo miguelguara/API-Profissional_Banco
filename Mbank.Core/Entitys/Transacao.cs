@@ -10,8 +10,9 @@ public class Transacao
     public Transacao(EtipoTransacao tipo,decimal valor, string? descricao, Guid carteiraId,Guid? cofrinhoId = null)
     {
         Id = Guid.NewGuid();
-        Data = DateTime.Now;
+        Data = DateTime.UtcNow;
         Tipo = tipo;
+        Valor = valor;
         Descricao = descricao;
         CarteiraId = carteiraId;
         CofrinhoId = cofrinhoId;

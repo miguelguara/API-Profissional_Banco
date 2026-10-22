@@ -17,7 +17,7 @@ namespace Mbank.Infrastructure.Repositories
         public async Task<Guid> CadastrarTransacao(Transacao transacao)
         {
             await _appDbContext.Transacaos.AddAsync(transacao);
-            _appDbContext.SaveChanges();
+            await _appDbContext.SaveChangesAsync();
             return transacao.Id;
         }
     }
