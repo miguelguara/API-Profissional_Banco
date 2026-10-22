@@ -41,14 +41,28 @@ namespace Mbank.Infrastructure.Repositories
             return ed.Id;
         }
 
-        public Task<List<Endereco>> ExcluirEndereco(Guid IdEndereco)
+        public async Task<List<Endereco>?> ExcluirEndereco(Guid IdEndereco)
         {
-            throw new NotImplementedException();
+            var endereco = await _appDbContext.Enderecos.FirstOrDefaultAsync(e => e.Id == IdEndereco);
+            if (endereco == null) return null;
+
+            _appDbContext.Enderecos.Remove(endereco);
+             await _appDbContext.SaveChangesAsync();
+
+            return _appDbContext.Enderecos.ToList();
+
         }
 
-        public Task<Guid> ExcluirTodosEnderecosPorCliente(Guid IdCliente)
+        public async Task<bool> ExcluirTodosEnderecosPorCliente(Guid IdCliente)
         {
-            throw new NotImplementedException();
+            var enderecos = await _appDbContext.Enderecos.Where(e =>e.ClienteId == IdCliente).ToListAsync();
+
+            if(enderecos == null) return false;
+
+            _appDbContext.Enderecos.RemoveRange(enderecos);
+            _appDbContext.SaveChanges();
+
+            return true;
         }
 
         public async Task<List<Endereco>> ListarEnderecos()

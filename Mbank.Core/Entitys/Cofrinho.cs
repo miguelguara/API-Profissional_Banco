@@ -4,8 +4,16 @@ using System.Collections.Generic;
 
 namespace Mbank.Core.Entitys
 {
-    public partial class Cofrinho
+    public class Cofrinho
     {
+        public Cofrinho(string nome, decimal? meta, Guid carteiraId)
+        {
+            Id = Guid.NewGuid();
+            Saldo = 0;
+            Nome = nome;
+            Meta = meta;
+            CarteiraId = carteiraId;
+        }
         public Guid Id { get; set; }
 
         public string Nome { get; set; } = null!;

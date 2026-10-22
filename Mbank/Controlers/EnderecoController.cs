@@ -42,12 +42,29 @@ namespace Mbank.Controlers
             return Ok(end);
         }
 
+      
         [HttpPut("AlterarEnderecoporID{id}")]
         public async Task<IActionResult> AlterarEndereco(Guid id,AlterarEndDTO alterarEndDTO)
         {
             var end = await _enderecoRepository.AlterarEnd(id,alterarEndDTO);
             if (end == null) return BadRequest();
             return Ok(end);
+        }
+
+        [HttpDelete("Excluirendereco{id}")]
+        public async Task<IActionResult> ExcluirEndereco(Guid id)
+        {
+            var enderecos = await _enderecoRepository.ExcluirEndereco(id);
+            return Ok(enderecos);
+        }
+
+        [HttpDelete("ExcluirTodosEnderecos{id}")]
+        public async Task<IActionResult> ExcluirEnderecosdoCliente(Guid id)
+        {
+            var resposta = await _enderecoRepository.ExcluirTodosEnderecosPorCliente(id);
+            if(resposta == false) return BadRequest();
+
+            return Ok("Endereços do cliente foram excluidos com sucesso!");
         }
     }
 }

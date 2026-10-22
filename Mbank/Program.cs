@@ -2,11 +2,11 @@ using Microsoft.EntityFrameworkCore;
 using Mbank.Infrastructure.Data.Context;
 using Mbank.Core.Interfaces.Repositories;
 using Mbank.Infrastructure.Repositories;
-using Mbank.Application.Applications;
 using FluentValidation;
 using SharpGrip.FluentValidation.AutoValidation.Mvc.Extensions;
 using Mbank.Core.Interfaces.Aplications.Clientes;
 using Mbank.Application.Validators.Cliente;
+using Mbank.Application.Applications.ClientesAP;
 
 var builder = WebApplication.CreateBuilder(args);
 

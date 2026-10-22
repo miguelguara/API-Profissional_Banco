@@ -6,13 +6,13 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Mbank.Application.Applications
+namespace Mbank.Application.Applications.ClientesAP
 {
     public class CadastrarCAplication : ICadastroClienteApp
     {
         private readonly IclienteRepository _clienteRepository;
         private readonly IcarteiraRepository _carteiraRepository;
-
+        
         public CadastrarCAplication(IclienteRepository repo, IcarteiraRepository carteiraRepository)
         {
             _clienteRepository = repo;

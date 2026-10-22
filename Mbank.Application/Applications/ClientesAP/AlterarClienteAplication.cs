@@ -2,11 +2,9 @@
 using Mbank.Core.Interfaces.Aplications.Clientes;
 using Mbank.Core.Interfaces.Repositories;
 using Mbank.Core.Models.Clientes;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Mbank.Application.Applications
+
+namespace Mbank.Application.Applications.ClientesAP
 {
     public class AlterarClienteAplication : IAlterarClienteApp
     {
@@ -15,7 +13,7 @@ namespace Mbank.Application.Applications
         {
             _clienteRepository = iclienteRepository;
         }
-        public async Task<Cliente> AlterarCliente(Guid id, AlterarClienteDTO altCliente)
+        public async Task<Core.Entitys.Cliente> AlterarCliente(Guid id, AlterarClienteDTO altCliente)
         {
             var cliente = await _clienteRepository.BuscarClienteID(id);
 
